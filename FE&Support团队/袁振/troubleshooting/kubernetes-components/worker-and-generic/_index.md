@@ -2,22 +2,22 @@
 title: Troubleshooting Worker Nodes and Generic Components
 ---
 
-This section applies to every node as it includes components that run on nodes with any role.
+本节适用于每个节点，因为它包括在具有任何角色的节点上运行的组件。
 
-## Check if the Containers are Running
+## 检查容器是否正在运行
 
-There are three specific containers launched on nodes with the `controlplane` role:
+在所有节点上应该运行以下两个容器：
 
 - kubelet
 - kube-proxy
 
-The containers should have status `Up`. The duration shown after `Up` is the time the container has been running.
+这些容器的正常情况应该是 **Up** 状态。 并且 **Up** 状态应该是长时间运行，通过下面命令可以进行检查：
 
 ```
 docker ps -a -f=name='kubelet|kube-proxy'
 ```
 
-Example output:
+输出示例：
 
 ```
 CONTAINER ID        IMAGE                                COMMAND                  CREATED             STATUS              PORTS               NAMES
@@ -25,9 +25,9 @@ CONTAINER ID        IMAGE                                COMMAND                
 a30717ecfb55        rancher/hyperkube:v1.11.5-rancher1   "/opt/rke-tools/en..."   3 hours ago         Up 3 hours                              kubelet
 ```
 
-## Container Logging
+## 容器日志
 
-The logging of the containers can contain information on what the problem could be.
+通过下面命令查看容器日志信息可以查看到可能包含的错误信息：
 
 ```
 docker logs kubelet

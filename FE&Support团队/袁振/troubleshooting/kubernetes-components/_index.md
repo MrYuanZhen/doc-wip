@@ -2,16 +2,19 @@
 title: Kubernetes Components
 ---
 
-The commands and steps listed in this section apply to the core Kubernetes components on [Rancher Launched Kubernetes](/docs/cluster-provisioning/rke-clusters/) clusters.
+本节中列出的命令和步骤适用于以下的核心Kubernetes组件[Rancher部署Kubernetes](/docs/cluster-provisioning/rke-clusters/)。
 
-This section includes troubleshooting tips in the following categories:
+本节包括以下类别的疑难解答：
 
-- [Troubleshooting etcd Nodes](/docs/troubleshooting/kubernetes-components/etcd)
-- [Troubleshooting Controlplane Nodes](/docs/troubleshooting/kubernetes-components/controlplane)
-- [Troubleshooting nginx-proxy Nodes](/docs/troubleshooting/kubernetes-components/nginx-proxy)
-- [Troubleshooting Worker Nodes and Generic Components](/docs/troubleshooting/kubernetes-components/worker-and-generic)
+- [对etcd节点进行故障排除](/docs/troubleshooting/kubernetes-components/etcd)
 
-## Kubernetes Component Diagram
+- [对Controlplane节点组件进行故障排除](/docs/troubleshooting/kubernetes-components/controlplane)
+
+- [对nginx-proxy进行故障排除](/docs/troubleshooting/kubernetes-components/nginx-proxy)
+
+- [对工作节点组件以及通用组件进行故障排除](/docs/troubleshooting/kubernetes-components/worker-and-generic)
+
+## Kubernetes组件图
 
 ![Cluster diagram](/img/rancher/clusterdiagram.svg)<br/>
-<sup>Lines show the traffic flow between components. Colors are used purely for visual aid</sup>
+<sup>线条显示了组件之间的流量。 线条颜色仅用于辅助</sup>

@@ -2,23 +2,23 @@
 title: Troubleshooting Controlplane Nodes
 ---
 
-This section applies to nodes with the `controlplane` role.
+本节适用于具有 `control` 角色的节点.
 
-## Check if the Controlplane Containers are Running
+## 检查Controlplane容器是否正在运行
 
-There are three specific containers launched on nodes with the `controlplane` role:
+在具有`control`角色的节点上启动了三个特定的容器
 
 - `kube-apiserver`
 - `kube-controller-manager`
 - `kube-scheduler`
 
-The containers should have status **Up**. The duration shown after **Up** is the time the container has been running.
+这三个容器的正常情况应该是 **Up** 状态。 并且 **Up** 状态应该是长时间运行，通过下面命令可以进行检查：
 
 ```
 docker ps -a -f=name='kube-apiserver|kube-controller-manager|kube-scheduler'
 ```
 
-Example output:
+输出示例：
 
 ```
 CONTAINER ID        IMAGE                                COMMAND                  CREATED             STATUS              PORTS               NAMES
@@ -27,11 +27,11 @@ f3d287ca4549        rancher/hyperkube:v1.11.5-rancher1   "/opt/rke-tools/en..." 
 bdf3898b8063        rancher/hyperkube:v1.11.5-rancher1   "/opt/rke-tools/en..."   3 hours ago         Up 3 hours                              kube-controller-manager
 ```
 
-## Controlplane Container Logging
+## Controlplane 容器日志
 
-> **Note:** If you added multiple nodes with the `controlplane` role, both `kube-controller-manager` and `kube-scheduler` use a leader election process to determine the leader. Only the current leader will log the performed actions. See [Kubernetes leader election](/docs/troubleshooting/kubernetes-resources/#kubernetes-leader-election) how to retrieve the current leader.
+> **注意:** 如果是 `control` 角色的节点， `kube-controller-manager` 和 `kube-scheduler` 会通过选举选举出leader节点。 只有leader节点会记录当前操作的日志信息。查看 [Kubernetes leader 选举](/docs/troubleshooting/kubernetes-resources/#kubernetes-leader-election) 可以知道如何查看当前的leader节点
 
-The logging of the containers can contain information on what the problem could be.
+通过下面命令查看容器日志信息可以查看到可能包含的错误信息：
 
 ```
 docker logs kube-apiserver
